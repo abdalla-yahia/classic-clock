@@ -47,12 +47,17 @@ function Fds() {
 Fdh()
 Fdm()
 Fds()
-
-
+    
+let oneHour = Number(`${(Hours * 30) + ((Minutes * 6) / 12)}`);
+let oneMinu = Number(`${(Minutes * 6) + (Seconds * 6) / 60}`);
+let oneSecond = Number(`${Seconds * 6}`);
 setInterval(() => {
-    seco.style.transform += `rotate(0.6deg)` 
-    min.style.transform += `rotate(0.01deg)` 
-    hour.style.transform += `rotate(${100/120000}deg)` 
+    oneSecond += 0.6;
+    oneMinu += 0.01;
+    oneHour += 100 / 120000;
+    seco.style.transform = `rotate(${oneSecond}deg)` 
+    min.style.transform = `rotate(${oneMinu}deg)` 
+    hour.style.transform = `rotate(${oneHour}deg)` 
     
 }, 100)
 
@@ -63,6 +68,7 @@ setInterval(() => {
         ds.innerHTML =0+ds.textContent
     }
     if (ds.textContent == 60) {
+        window.location.reload;
         ds.textContent = 0;
         dm.textContent++;
         if (dm.textContent < 10) {
