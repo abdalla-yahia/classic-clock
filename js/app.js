@@ -7,6 +7,7 @@ const ds = document.querySelector(".ds");
 const dy = document.querySelector(".parent3");
 
 const aud = document.querySelector("#aud");
+const aud2 = document.querySelector("#aud2");
 
 const date = new Date();
 const Hours = date.getHours()
@@ -39,6 +40,7 @@ function Fds() {
     if (count < 10)
     {
         ds.textContent = `0${count}`
+        
     }
     else 
         ds.textContent = `${count}`
@@ -68,7 +70,7 @@ setInterval(() => {
         ds.innerHTML =0+ds.textContent
     }
     if (ds.textContent == 60) {
-        window.location.reload;
+        window.location.reload();
         ds.textContent = 0;
         dm.textContent++;
         if (dm.textContent < 10) {
@@ -82,6 +84,10 @@ setInterval(() => {
             dh.innerHTML =0+dh.textContent
         }
         aud.play()
+    }
+
+    if (dh.textContent == 13 ) { 
+         dh.textContent = 1;
     }
     count++
 }, 1000)
