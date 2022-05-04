@@ -5,14 +5,15 @@ const dh = document.querySelector(".dh");
 const dm = document.querySelector(".dm");
 const ds = document.querySelector(".ds");
 const dy = document.querySelector(".parent3");
-
+const catina = document.querySelector(".catina")
 const aud = document.querySelector("#aud");
 const aud2 = document.querySelector("#aud2");
-
+const parent = document.querySelector(".parent");
 const date = new Date();
 const Hours = date.getHours()
 const Minutes = date.getMinutes()
 const Seconds = date.getSeconds()
+
 
 hour.style.transform = `rotate(${(Hours*30)+((Minutes*6)/12)}deg)`
 min.style.transform = `rotate(${(Minutes*6)+(Seconds*6)/60}deg)`
@@ -43,13 +44,13 @@ function Fds() {
         
     }
     else 
-        ds.textContent = `${count}`
+    ds.textContent = `${count}`
 }
 
 Fdh()
 Fdm()
 Fds()
-    
+
 let oneHour = Number(`${(Hours * 30) + ((Minutes * 6) / 12)}`);
 let oneMinu = Number(`${(Minutes * 6) + (Seconds * 6) / 60}`);
 let oneSecond = Number(`${Seconds * 6}`);
@@ -90,9 +91,32 @@ setInterval(() => {
          dh.textContent = 1;
     }
     count++
-}, 1000)
+    catina.style.backgroundColor = changeColor()
+    // parent.style.backgroundImage= url(changeBackground());
 
+}, 1000)
 
 dy.textContent = date.toDateString()
 
 
+function changeColor() {
+    const num = '0123456789abcdef';
+    let color = "#";
+    for (let i = 0; i < 6; i++){
+        color += num[Math.round(Math.random()*16)]
+    }
+    return color;
+}
+
+function changeBackground() {
+    let images= ["/image/0\ \(1\).jpg","/image/0\ \(2\).jpg","/image/0\ \(3\).jpg","/image/0\ \(4\).jpg","/image/0\ \(5\).jpg","/image/0\ \(6\).jpg"]
+    let src = "";
+    for (let i = 0; i < images.length; i++){
+        src = images[Math.round(Math.random()*6)]
+    }
+    return src;
+}
+
+
+console.log(changeBackground())
+document.getElementsByTagName("div")[0].style.backgroundImage = `url('${changeBackground()}')`
