@@ -105,7 +105,7 @@ function changeBackground() {
   ]
   let src = ''
   for (let i = 0; i < images.length; i++) {
-    src = images[Math.round(Math.random() * 6)]
+    src = images[Math.round(Math.random() * 7)]
   }
   return src
 }
